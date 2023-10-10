@@ -23,7 +23,6 @@ class BookController extends Controller
         $book = new Book();
         $book->author = $request->author;
         $book->title = $request->title;
-        $book->pieces = $request->pieces;
         $book->save();
     }
 
@@ -31,7 +30,6 @@ class BookController extends Controller
         $book = Book::find($id);
         $book->author = $request->author;
         $book->title = $request->title;
-        $book->pieces = $request->pieces;
         $book->save();
     }
 
@@ -44,7 +42,7 @@ class BookController extends Controller
 
     public function editView($id){
         $book = Book::find($id);
-        return view('book.edit', ['book' => $book]);
+        return view('book.edit', ['books' => $book]);
     }
 
     public function newView(){

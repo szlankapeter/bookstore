@@ -18,17 +18,26 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('password');
+            //0: konyvtaros, 1: felhaszn
             $table->boolean('permission')->default(1);
         });
-        User::create(['name'=>'Peti','email'=>"peti@gmail.com", 'passowrd'=>Hash::make('A12345')]);
-        User::create(['name'=>'Geri','email'=>"geri@gmail.com", 'passowrd'=>Hash::make('St123456'), 'permission'=>0]);
+        User::create([
+            'name' => 'Könyvtáros',
+            'email' => "konyvtar@gmail.com",
+            'password' => Hash::make('St123456'),
+            'permission' => 0
+        ]);
+
+        User::create([
+            'name' => 'Geri',
+            'email' => "geri@gmail.com",
+            'password' => Hash::make('aaa1234')
+        ]);
     }
 
-    
+
     public function down(): void
     {
         Schema::dropIfExists('users');
     }
-
-
 };
